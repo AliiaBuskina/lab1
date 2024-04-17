@@ -1,0 +1,24 @@
+site_name: ToDone API Documentation
+nav:
+  - Home: index.md
+  - Models: models.md
+  - Shemas: schemas.md
+  - User API:
+      - 'User Endpoints': user_endpoints.md
+  - Task API:
+      - 'Task Endpoints': task_endpoints.md
+theme:
+  name: material
+  palette:
+    primary: 'blue'
+    accent: 'light blue'
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+docs_dir: docs
+site_dir: site
+
+
+
