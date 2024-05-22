@@ -1,12 +1,16 @@
 site_name: ToDone API Documentation
 nav:
-  - Home: index.md
-  - Models: models.md
-  - Shemas: schemas.md
-  - User API:
-      - 'User Endpoints': user_endpoints.md
-  - Task API:
-      - 'Task Endpoints': task_endpoints.md
+  - lab1:
+    - Main: index.md
+    - Models: models.md
+    - Shemas: schemas.md
+    - User API:
+        - 'User Endpoints': user_endpoints.md
+    - Task API:
+        - 'Task Endpoints': task_endpoints.md
+  - lab2:
+      - task1: task1.md
+      - task2: task2.md
 theme:
   name: material
   palette:
