@@ -1,6 +1,6 @@
 Для запуска приложения в Docker-е сначала я создала файл requirements.txt, в котором прописаны все библиотеки, используемые в проекте
 ```commandline
-pip freeze > requirements.txt
+pip freeze  requirements.txt
 ```
 
 Далее был написан Dockerfile:
@@ -22,7 +22,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 Также был написан doker-compose.yml:
-```dockerfile
+```docker
 version: "3.8"
 
 services:
@@ -48,10 +48,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql://postgres:Aliya2103@db:5432/todo
-
-volumes:
-  postgres_data:
+      -.env
 ```
 
 Далее командами:
