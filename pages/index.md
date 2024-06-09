@@ -6,12 +6,12 @@
 
 ToDone API предоставляет возможность управления пользователями и задачами. Вы можете создавать, обновлять, удалять и просматривать пользователей и их задачи, используя соответствующие конечные точки API.
 # main.py
+
 ```python
 from fastapi import FastAPI
 from connection import *
 from routes.task_routes import router as task_router
 from routes.user_routes import router as user_router
-
 
 app = FastAPI(
     title="ToDone",
@@ -19,11 +19,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
+
 @app.on_event("startup")
 def on_startup():
     print("Initializing database...")
     init_db()
     print("Database initialized.")
+
 
 user_tags_metadata = {"Operations related to users"}
 task_tags_metadata = {"Operations related to tasks"}

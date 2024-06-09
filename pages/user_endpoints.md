@@ -5,7 +5,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.exceptions import RequestValidationError
 import jwt
 from sqlalchemy.orm import Session
-import models, crud, schemas
+import schemas
+import crud
+import models
 from auth import auth
 from connection import get_session
 from schemas import *
