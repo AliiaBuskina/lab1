@@ -21,8 +21,25 @@ COPY . .
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
+Далее был написан Dockerfile.parser:
+```dockerfile
+FROM python:3.10-slim
+
+RUN mkdir /parser_app
+
+WORKDIR /parser_app
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY . .
+
+CMD ["uvicorn", "parser:app", "--host", "0.0.0.0", "--port", "8001"]    
+```
+
 Также был написан doker-compose.yml:
-```docker
+```dockerfile
 version: "3.8"
 
 services:
@@ -48,7 +65,22 @@ services:
     depends_on:
       - db
     environment:
-      -.env
+      DATABASE_URL: postgresql://postgres:Aliya2103@db:5432/todo
+
+  parser:
+    build:
+      context: .
+      dockerfile: Dockerfile.parser
+    container_name: parser_app
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:Aliya2103@db:5432/todo
+
+volumes:
+  postgres_data:
 ```
 
 Далее командами:
@@ -56,4 +88,4 @@ services:
 docker compose build
 docker compose up
 ```
-Были запущены 2 сервиса для развертывания приложения в Docker-е.
+Были запущены 3 сервиса для развертывания приложения в Docker-е.
